@@ -78,7 +78,6 @@ def convert_image_to_svg(image_path):
     svg_output = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 {width} {height}" shape-rendering="crispEdges">\n{svg_output}</svg>'
     return svg_output
 
-
 # MAIN FUNCTION
 def main(input_filepath, output_filepath):
     svg_content = convert_image_to_svg(input_filepath)

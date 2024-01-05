@@ -33,7 +33,9 @@ def make_path(color, data):
     return f'<path stroke="{color}" d="{data}" />'
 
 def convert_image_to_svg(image_path):
-    # Load image
+    # Load image.
+    # TODO: Handle the case where there is more than one image in this file
+    # (like an ICO or CUR).
     image = Image.open(image_path).convert("RGBA")
     width, height = image.size
     pixels = image.load()

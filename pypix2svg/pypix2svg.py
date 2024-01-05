@@ -80,18 +80,27 @@ def convert_image_to_svg(image_path):
     svg_output = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 {width} {height}" shape-rendering="crispEdges">\n{svg_output}</svg>'
     return svg_output
 
-# MAIN FUNCTION
-def main(input_filepath, output_filepath):
-    svg_content = convert_image_to_svg(input_filepath)
-    if output_filepath is None:
-        output_filepath = f'{input_filepath}.svg'
-    with open(output_filepath, "w") as f:
-        f.write(svg_content)
-
-if __name__ == "__main__":
+# MAKE THE CONVERTER USABLE FROM THE COMMAND LINE.
+def main():
+    # DEFINE THE COMMAND LINE PARSER.
     parser = argparse.ArgumentParser(description='Convert a raster image to SVG.')
-    parser.add_argument('input', help='Input image path. Can be any image format that Pillow supports.')
-    parser.add_argument('--output', required=False, help='Output SVG path. If not included, the output path fill be the input path plus an SVG extension.')
+    parser.add_argument(
+        'input', 
+        help = 'Input image path. Can be any image format that Pillow supports.')
+    parser.add_argument(
+        '--output', 
+        required = False, 
+        help = 'Output SVG path. If not included, the output path fill be the input path plus an SVG extension.')
 
+    # CONVERT THE REQUESTED IMAGE.
     args = parser.parse_args()
-    main(args.input, args.output)
+    svg_content = convert_image_to_svg(args.input)
+    if args.output is None:
+        args.output = f'{args.input}.svg'
+    with open(args.output, "w") as f:
+        f.write(svg_content)
+# Check the case when the script is run interactively.
+# If it's installed from PyPI, this shouldn't be needed,
+# but I'll keep it in in case it is run directly.
+if __name__ == "__main__":
+    main()

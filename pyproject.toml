@@ -1,10 +1,11 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=64", "wheel", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
+# We are using setuptools_scm for versioning, so no version number is specified here.
+dynamic = ["version"]
 name = "pypix2svg"
-version = "0.1.0"
 authors = [{ name = "Nathanael Gentry", email = "nathanael.gentrydb8@gmail.com" }]
 description = "Converts the pixels of a raster image to SVG for pixel-perfectness. Best for 8-bit or lower images."
 license = {file = "COPYING"}
@@ -19,6 +20,9 @@ requires-python = ">=3.9"
 dependencies = [
     "Pillow>=9.2.0",
 ]
+
+[tool.setuptools_scm]
+# Empty since no extra settings are needed, presence enables setuptools_scm.
 
 [project.urls]
 homepage = "https://github.com/npjg/pypix2svg"

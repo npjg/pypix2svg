@@ -7,7 +7,7 @@ name = "pypix2svg"
 version = "0.1.0"
 authors = [{ name = "Nathanael Gentry", email = "nathanael.gentrydb8@gmail.com" }]
 description = "Converts the pixels of a raster image to SVG for pixel-perfectness. Best for 8-bit or lower images."
-license = {file = "LICENSE"}
+license = {file = "COPYING"}
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",

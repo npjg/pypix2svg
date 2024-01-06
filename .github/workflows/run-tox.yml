@@ -12,6 +12,8 @@ jobs:
 
     strategy:
       matrix:
+        # These Python versions MUST be synchronized 
+        # with the Python versions in tox.ini.
         python-version: ['3.9', '3.10']
 
     steps:
